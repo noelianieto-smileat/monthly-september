@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smileat · Reporte Mensual Ads</title>
+<style>
+
+  /* ============================================================
+     1) TU CONTENIDO VIVE EN EL <script>, AL FINAL DEL ARCHIVO
+        (busca CONTENIDO). Para actualizar el reporte cada mes:
+        - Cambia MES
+        - Rellena MIMO (mantener / incorporar / mejorar / omitir)
+        - Rellena PROMOS con los lanzamientos del mes (y sus
+          creatividades, se muestran en un carrusel dentro de
+          cada tarjeta)
+        - Rellena META_KPIS / META_CREATIVOS
+        - Rellena GOOGLE_KPIS / GOOGLE_CAMPANAS
+        - El ORDEN en que escribas las creatividades de Meta es el
+          orden en que se muestran → colócalas de mejor a peor.
+     ============================================================ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap');
+
+  :root{
+    --brand: #29abe2;
+    --meta: #0866ff;
+    --google: #ea4335;
+    --ink: #10222c;
+    --ink-dim: #7c8a96;
+    --page-bg: #eef3f6;
+    --card-bg: #ffffff;
+    --chip-bg: #f3f6f9;
+    --line: #e3eaf0;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0; padding:0;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: 'Montserrat', sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* cabecera */
+  header{
+    background: var(--brand);
+    color: #ffffff;
+    padding: 26px 24px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  header .logo-chip{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+  header img.logo{ height: 32px; width: auto; }
+  header h1{
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+  header p{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* secciones generales */
+  .section{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 36px 20px 8px;
+  }
+  .section h2{
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section .section-sub{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-dim);
+    margin: 0 0 18px;
+  }
+  .platform-dot{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .platform-dot.meta{ background: var(--meta); }
+  .platform-dot.google{ background: var(--google); }
+  .empty{
+    font-size: 12px;
+    color: var(--ink-dim);
+    font-style: italic;
+  }
+
+  /* ---------------- MIMO ---------------- */
+  .mimo-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .mimo-card{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+    border-top: 4px solid var(--c);
+  }
+  .mimo-card h3{
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: var(--c);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .mimo-card .mimo-icon{ font-size: 18px; margin-right: 4px; }
+  .mimo-card ul{
+    margin: 10px 0 0;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .mimo-card ul li{ margin-bottom: 6px; }
+  .mimo-card .empty{ margin-top: 10px; }
+  @media (max-width: 900px){ .mimo-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px){ .mimo-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------------- Promos / lanzamientos ---------------- */
+  .promos-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .promo-card{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 18px 18px;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+  }
+  .promo-card .promo-fecha{
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+  }
+  .promo-card h4{
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .promo-card p{
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .promo-badges{ display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+  .promo-badge{
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .promo-badge.meta{ background: var(--meta); }
+  .promo-badge.google{ background: var(--google); }
+  @media (max-width: 900px){ .promos-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px){ .promos-grid{ grid-template-columns: 1fr; } }
+
+  /* carrusel de creatividades dentro de la promo — 1 imagen visible + flechas */
+  .promo-carousel{ position: relative; margin-top: 12px; }
+  .promo-carousel-slide{
+    position: relative;
+    background: #10222c;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+  .promo-carousel-slide img,
+  .promo-carousel-slide video{
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .promo-carousel-counter{
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(16,34,44,0.65);
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+  .promo-carousel-label{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: var(--ink-dim);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+  .promo-carousel-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: #ffffff;
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.15);
+    z-index: 2;
+  }
+  .promo-carousel-nav.prev{ left: 8px; }
+  .promo-carousel-nav.next{ right: 8px; }
+
+  /* ---------------- resumen de métricas (KPI bar) ---------------- */
+  .kpi-bar{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+  .kpi{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+  }
+  .kpi .kpi-val{
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .kpi .kpi-lab{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 4px;
+  }
+  .kpi .kpi-delta{
+    font-family: 'Nunito', sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    margin-top: 6px;
+  }
+  .kpi .kpi-delta.good{ color: #1a8f4c; }
+  .kpi .kpi-delta.bad{ color: #c23a2a; }
+  .kpi .kpi-delta.neutral{ color: var(--ink-dim); }
+
+  /* conclusiones / lectura rápida */
+  .conclusiones{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--brand);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 26px;
+  }
+  .conclusiones h3{
+    font-family: 'Nunito', sans-serif;
+    font-size: 12.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--brand);
+    margin: 0 0 8px;
+  }
+  .conclusiones ul{
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .conclusiones ul li{ margin-bottom: 6px; }
+
+  /* ---------------- creatividades Meta (cards) ---------------- */
+  .creativos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    padding-bottom: 10px;
+  }
+  .card{
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+  .rank{
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--meta);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+  .media{ background: #10222c; aspect-ratio: 4 / 5; overflow: hidden; }
+  .media img, .media video{ width: 100%; height: 100%; object-fit: cover; display:block; }
+  .card-body{ padding: 16px 16px 18px; }
+  .card-title{
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .badge-new{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #fff4e0;
+    color: #a5670a;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat{ background: var(--chip-bg); border-radius: 10px; padding: 9px 6px; text-align: center; }
+  .stat .val{
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .stat .lab{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 4px;
+  }
+  .stat.good{ background: #e3f6ea; } .stat.good .val{ color: #1a8f4c; }
+  .stat.mid{ background: #fdf3d7; } .stat.mid .val{ color: #9a6b00; }
+  .stat.bad{ background: #fbe6e3; } .stat.bad .val{ color: #c23a2a; }
+  @media (max-width: 560px){ .creativos{ grid-template-columns: 1fr; } }
+
+  /* ---------------- tabla Google (campañas) ---------------- */
+  .tabla-card{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+    margin-bottom: 10px;
+    overflow-x: auto;
+  }
+  table.tabla{ width: 100%; border-collapse: collapse; }
+  .tabla thead th{
+    background: var(--google);
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+  .tabla thead th.num{ text-align: right; }
+  .tabla thead th.head-meta{ background: var(--meta); }
+  .tabla td.rank-num{ font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--ink-dim); }
+  .tabla tr.fila-total td{
+    border-top: 2px solid var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    background: var(--chip-bg);
+  }
+  .tabla tbody td{
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border-top: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .tabla tbody tr:nth-child(even){ background: var(--chip-bg); }
+  .tabla td.num{ text-align: right; font-variant-numeric: tabular-nums; }
+  .tabla td.nombre{ font-weight: 700; white-space: normal; }
+  .tabla td.num.good{ color: #1a8f4c; font-weight: 700; }
+  .tabla td.num.mid{ color: #9a6b00; font-weight: 700; }
+  .tabla td.num.bad{ color: #c23a2a; font-weight: 700; }
+  @media (max-width: 560px){ .tabla thead th, .tabla tbody td{ padding: 8px 8px; font-size: 12px; } }
+
+  /* ---------------- top productos por ingresos (dentro de Meta/Google) ---------------- */
+  .top-productos-titulo{
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 26px 0 4px;
+  }
+
+  footer{
+    text-align:center;
+    padding: 30px 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--ink-dim);
+  }
+
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-chip">
+      <img class="logo" src="assets/logo-smileat.png" alt="Smileat">
+    </div>
+    <h1 id="titulo"></h1>
+    <p id="subtitulo"></p>
+  </header>
+
+  <!-- ==================== MIMO (compartido Meta + Google) ==================== -->
+  <section class="section">
+    <h2>🧭 MIMO del próximo mes</h2>
+    <p class="section-sub">Mantener · Incorporar · Mejorar · Omitir — de cara al próximo mes, en base a lo visto en Meta y Google Ads</p>
+    <div class="mimo-grid" id="mimo-grid"></div>
+  </section>
+
+  <!-- ==================== Promociones / lanzamientos ==================== -->
+  <section class="section">
+    <h2>🚀 Promociones y lanzamientos del mes</h2>
+    <p class="section-sub" id="promos-sub"></p>
+    <div class="promos-grid" id="promos-grid"></div>
+  </section>
+
+  <!-- ==================== META ADS ==================== -->
+  <section class="section">
+    <h2><span class="platform-dot meta"></span> Meta Ads</h2>
+    <p class="section-sub" id="meta-sub"></p>
+    <div class="kpi-bar" id="meta-kpis"></div>
+    <div class="conclusiones" id="meta-conclusiones"></div>
+    <div class="creativos" id="meta-creativos"></div>
+    <h3 class="top-productos-titulo">🛍️ Top 10 productos por ingresos</h3>
+    <p class="section-sub" id="top-meta-sub"></p>
+    <div class="tabla-card"><table class="tabla" id="top-meta-tabla"></table></div>
+  </section>
+
+  <!-- ==================== GOOGLE ADS ==================== -->
+  <section class="section">
+    <h2><span class="platform-dot google"></span> Google Ads</h2>
+    <p class="section-sub" id="google-sub"></p>
+    <div class="kpi-bar" id="google-kpis"></div>
+    <div class="conclusiones" id="google-conclusiones"></div>
+    <h3 class="top-productos-titulo">🛍️ Top 10 productos por ingresos</h3>
+    <p class="section-sub" id="top-google-sub"></p>
+    <div class="tabla-card"><table class="tabla" id="top-google-tabla"></table></div>
+  </section>
+
+  <footer id="pie"></footer>
+
+<script>
+
+  /* ============================================================
+     CONTENIDO — EDITA SOLO A PARTIR DE AQUÍ
+     ============================================================ */
+
+  const MES = "26 jul – 13 sep 2026"; // 👈 rango de este informe (no es un mes natural, sino "desde el último informe")
+  const COMPARATIVA = "del periodo"; // 👈 este export no trae comparación con el periodo anterior, así que no hay deltas esta vez
+
+  /* ------------------------------------------------------------
+     MIMO — compartido entre Meta y Google.
+     ------------------------------------------------------------ */
+  const MIMO = {
+    mantener: [
+      "Campaña de seguidores (TOFU) centrada en dar promo a posts de divulgación y a clips del podcast: el podcast aporta alcance, los de divulgación siguen trayendo seguidores que maduran en MOFU y BOFU.",
+      "Las creatividades de producto siguen funcionando mejor que las de consumo — pendiente ver si esta tendencia se repite también en toda la parte de suscripción.",
+      "Promo de recetas en MOFU, pero con presupuesto reducido.",
+      "La prioridad sigue siendo la SUSCRIPCIÓN.",
+    ],
+    incorporar: [
+      "Próximos meses: lanzamiento del tarrito de calabaza y de las barritas KIDS.",
+      "Crear más posts de divulgación para poder darles promo y seguir ganando seguidores.",
+      "Cuando haya alguna promo de suscripción, meter también creatividades que destaquen el 10% de descuento con el código TANREAL — si no, baja mucho el OTP, y el objetivo es subir tanto suscripción como venta.",
+      "Nuevo canal: paid en OpenAI ya activado, y TikTok Shop en configuración (UGCs, vídeos...).",
+    ],
+    mejorar: [
+      "Seguir mejorando la frecuencia de los anuncios.",
+      "Continuar incluyendo mejoras en los anuncios.",
+    ],
+    omitir: [
+      // Nada que omitir este periodo
+    ],
+  };
+
+  /* ------------------------------------------------------------
+     PROMOCIONES / LANZAMIENTOS DEL MES
+     Cada promo puede llevar su propio carrusel de creatividades
+     (las piezas de imagen/video que formaron esa campaña).
+     ------------------------------------------------------------ */
+  const PROMOS_SUB = "Campañas y ofertas activas durante " + MES;
+  const PROMOS = [
+    {
+      fecha: "26 jul – 2 ago",
+      nombre: "15% Packs / 25% Suscripción",
+      descripcion: "Promo de packs con descuento y primer mes de suscripción, activa en Meta y Google.",
+      plataformas: ["meta", "google"],
+      creatividades: [
+        { type: "image", src: "media/packs-15-subs-25-sep/img-1.jpg", nota: "IMG 1" },
+        { type: "image", src: "media/packs-15-subs-25-sep/img-2.jpg", nota: "IMG 2 (nueva)" },
+        { type: "video", src: "media/packs-15-subs-25/ugc-hook-1.mp4", nota: "UGC Hook 1" },
+        { type: "video", src: "media/packs-15-subs-25/ugc-hook-2.mp4", nota: "UGC Hook 2" },
+        { type: "video", src: "media/packs-15-subs-25/video-consumo.mp4", nota: "Vídeo consumo" },
+      ],
+    },
+    {
+      fecha: "9 – 16 ago",
+      nombre: "Set de cubiertos con tu suscripción",
+      descripcion: "Regalo de set de cubiertos al suscribirte.",
+      plataformas: ["meta"],
+      creatividades: [
+        { type: "image", src: "media/cubiertos-agosto/post-1.jpg", nota: "Post 1" },
+        { type: "image", src: "media/cubiertos-agosto/post-2.jpg", nota: "Post 2" },
+      ],
+    },
+    {
+      fecha: "25 ago", // 👈 fecha tomada del informe anterior, confírmame si es correcta
+      nombre: "Lanzamiento Cereales KIDS",
+      descripcion: "Lanzamiento de los cereales de la línea KIDS.",
+      plataformas: ["meta", "google"], // 👈 en Google corresponde a la nueva campaña "Demand Gen · SMILEAT KIDS"
+      creatividades: [
+        { type: "image", src: "media/cereales-kids/lanzamiento.jpg", nota: "Publi lanzamiento" },
+        { type: "image", src: "media/cereales-kids/kids-rubio-1.jpg", nota: "Publi KIDS + Rubio · v1" },
+        { type: "image", src: "media/cereales-kids/kids-rubio-2.jpg", nota: "Publi KIDS + Rubio · v2" },
+      ],
+    },
+    {
+      fecha: "30 ago – 7 sep",
+      nombre: "Vuelta al cole: 15% en todo / 30% primera suscripción",
+      descripcion: "Promo de vuelta al cole con 15% de descuento general y 30% en la primera suscripción.",
+      plataformas: ["meta"],
+      creatividades: [
+        { type: "image", src: "media/vuelta-al-cole/post-1.jpg", nota: "Post 1" },
+        { type: "image", src: "media/vuelta-al-cole/post-2.jpg", nota: "Post 2" },
+        { type: "image", src: "media/vuelta-al-cole/post-3.jpg", nota: "Post 3" },
+      ],
+    },
+    {
+      fecha: "Desde el 8 sep (en curso)", // 👈 confírmame fecha de inicio exacta
+      nombre: "Mes de la suscripción",
+      descripcion: "3 primeros pedidos al 25% y luego 15% para siempre.",
+      plataformas: ["meta"],
+      creatividades: [
+        { type: "image", src: "media/mes-suscripcion/promo-1.jpg", nota: "Promo · v1" },
+        { type: "image", src: "media/mes-suscripcion/promo-2.jpg", nota: "Promo · v2" },
+      ],
+    },
+  ];
+
+  /* ------------------------------------------------------------
+     META ADS
+     Métricas pensadas para no quedarnos solo en eCommerce (ROAS,
+     coste/resultado) sino también reflejar marca/alcance:
+     - Alcance y Frecuencia → cuánta gente ve el anuncio y cuántas veces
+     - CPM → coste de exposición, clave para lectura de marca
+     - % Reproducción completa (thruplay) → calidad del contenido de vídeo
+     - CTR → interés/relevancia del anuncio
+     - Resultados / Coste por resultado / ROAS → performance y venta
+     Quita o añade filas según lo que quieras reportar cada mes.
+     ------------------------------------------------------------ */
+  const META_SUB = "Meta Ads · " + MES + " · España";
+
+  // Datos reales del export de campañas de Meta Ads (26 jul – 13 sep 2026).
+  // 3 campañas activas: BOFU (venta), MOFU (recetas, presupuesto reducido)
+  // y TOFU (captación de seguidores vía posts de divulgación + podcast).
+  // Este export no trae periodo de comparación, así que no hay deltas.
+  // "Valor ventas" de MOFU está estimado a partir de su ROAS × gasto,
+  // porque a nivel de campaña Meta no desglosa el valor cuando se mezclan
+  // objetivos distintos entre conjuntos — si tienes el dato exacto, sustitúyelo.
+  const META_KPIS = [
+    { lab: "Inversión", val: "32.021,70 €" },
+    { lab: "Impresiones", val: "10.862.654" },
+    { lab: "CPM", val: "2,95 €" },
+    { lab: "Compras (venta)", val: "3.147" },
+    { lab: "Coste/compra", val: "10,08 €" },
+    { lab: "Valor ventas (est.)", val: "142.809,24 €" },
+    { lab: "ROAS (est.)", val: "4,50x" },
+    { lab: "Visitas a perfil (TOFU)", val: "4.310" },
+    { lab: "Coste/visita perfil", val: "0,07 €" },
+  ];
+
+  // Lectura rápida (Meta), a nivel de conjunto de anuncios dentro de BOFU
+  // (que es donde está el detalle granular en este export).
+  const META_CONCLUSIONES = [
+    "El presupuesto se reparte en 3 campañas: BOFU (28.025 €, foco venta), MOFU (3.686 €, recetas con presupuesto reducido) y TOFU (310 €, captación de seguidores) — coherente con la prioridad de suscripción.",
+    "Dentro de BOFU, el conjunto con mejor coste por compra es Lanzamiento SMILEAT KIDS (5,41 €, 341 compras), seguido de Smilados UGC (8,72 €) y Vuelta al Cole (8,21 €) — confirma que las creatividades de producto siguen funcionando mejor que las de consumo.",
+    "Los conjuntos always-on de suscripción (imagen, UGC y test) concentran el mayor volumen — unas 1.000 compras entre los tres — pero con el coste por compra más alto de la cuenta (13-18 €). Aquí es donde más sentido tiene meter las creatividades con el código TANREAL, para no perder OTP mientras se empuja suscripción.",
+    "Cubiertos - Agosto (8,49 €, 148 compras) y 15% Packs/25% Suscripción (7,10 €, 192 compras) tienen un coste por compra sólido, en la media de la cuenta.",
+    "Promo Suscripción - Septiembre acaba de arrancar (19 compras a 9,15 €) — es el \"mes de la suscripción\" actual, todavía pronto para sacar conclusiones.",
+    "La campaña de seguidores (TOFU) trae 4.310 visitas a perfil a solo 0,07 € cada una — barato, en línea con seguir dándole promo a posts de divulgación y clips del podcast.",
+  ];
+
+  // Creatividades individuales — este mes solo tengo el export a nivel de
+  // conjunto de anuncios (no de anuncio/creatividad suelta), así que no
+  // puedo montar las tarjetas de "mejor creatividad" con imagen. En cuanto
+  // tengas el export a nivel de anuncio (o las piezas de las promos
+  // pendientes), lo relleno con el mismo formato que meses anteriores.
+  const META_CREATIVOS = [
+  ];
+
+  /* ------------------------------------------------------------
+     GOOGLE ADS
+     Igual que en Meta, se combinan métricas de venta (conversiones,
+     CPA, valor de conversión) con métricas de marketing/visibilidad:
+     - Impresiones y Cuota de impresiones → cuánto se nos ve y cuánto
+       nos dejamos de ver por presupuesto/ranking
+     - CPC medio → eficiencia de puja
+     - CTR → relevancia del anuncio/búsqueda
+     Quita o añade columnas según lo que quieras reportar cada mes.
+     ------------------------------------------------------------ */
+  const GOOGLE_SUB = "Google Ads · " + MES + " · España (excluidas 2 campañas de PT que aparecen en el mismo export)";
+
+  // Datos reales del informe de campaña de Google Ads (26 jul – 13 sep 2026),
+  // filtrado a solo campañas "ES" (el export trae también 2 de Portugal).
+  // Esta vez el export no trae columnas de comparación con el periodo
+  // anterior, así que no hay deltas.
+  const GOOGLE_KPIS = [
+    { lab: "Inversión", val: "8.176,01 €" },
+    { lab: "Impresiones", val: "852.396" },
+    { lab: "Clics", val: "33.098" },
+    { lab: "CTR", val: "3,88%" },
+    { lab: "Conversiones", val: "3.483,44" },
+    { lab: "CPA", val: "2,35 €" },
+    { lab: "Valor conv.", val: "184.818,08 €" },
+    { lab: "ROAS", val: "22,6x" },
+  ];
+
+  // Columnas de la tabla de campañas (label, key). Se pueden añadir/quitar.
+  const GOOGLE_COLUMNAS = [
+    ["Campaña", "nombre", "text"],
+    ["Tipo", "tipo", "text"],
+    ["Gasto", "gasto", "num"],
+    ["Impresiones", "impresiones", "num"],
+    ["Clics", "clics", "num"],
+    ["CTR", "ctr", "num"],
+    ["Conversiones", "conversiones", "num"],
+    ["CPA", "cpa", "num"],
+    ["Valor conv.", "valorConv", "num"],
+  ];
+
+  // Campañas ES, ordenadas de MEJOR a PEOR resultado (por conversiones).
+  // Se conserva como dato de referencia interno (no se muestra en el
+  // informe, ver nota al final del script).
+  const GOOGLE_CAMPANAS = [
+    {
+      nombre: "Search · Brand", tipo: "Búsqueda",
+      gasto: "928,48 €", impresiones: "30.995", clics: "13.320", ctr: "42,97%",
+      conversiones: "2.091,96", cpa: "0,44 €", valorConv: "118.329,90 €",
+    },
+    {
+      nombre: "PMáx · Lanzamientos/Promos", tipo: "Rend. máximo",
+      gasto: "1.653,91 €", impresiones: "192.545", clics: "5.752", ctr: "2,99%",
+      conversiones: "474,03", cpa: "3,49 €", valorConv: "25.657,89 €",
+    },
+    {
+      nombre: "PMáx · Productos", tipo: "Rend. máximo",
+      gasto: "991,43 €", impresiones: "209.775", clics: "4.552", ctr: "2,17%",
+      conversiones: "373,01", cpa: "2,66 €", valorConv: "17.274,65 €",
+    },
+    {
+      nombre: "PMáx · Suscripción", tipo: "Rend. máximo",
+      gasto: "1.441,43 €", impresiones: "35.956", clics: "3.612", ctr: "10,05%",
+      conversiones: "343,25", cpa: "4,20 €", valorConv: "14.345,19 €",
+    },
+    {
+      nombre: "Search · Suscripción", tipo: "Búsqueda",
+      gasto: "728,02 €", impresiones: "18.588", clics: "1.327", ctr: "7,14%",
+      conversiones: "145,08", cpa: "5,02 €", valorConv: "6.551,14 €",
+    },
+    {
+      nombre: "Demand Gen · SMILEAT KIDS", tipo: "Gen. demanda",
+      gasto: "1.146,93 €", impresiones: "167.076", clics: "2.801", ctr: "1,68%",
+      conversiones: "26,33", cpa: "43,56 €", valorConv: "1.223,32 €",
+    },
+    {
+      nombre: "Demand Gen · Suscripción", tipo: "Gen. demanda",
+      gasto: "869,00 €", impresiones: "151.627", clics: "1.259", ctr: "0,83%",
+      conversiones: "22,78", cpa: "38,14 €", valorConv: "1.159,67 €",
+    },
+    {
+      nombre: "Display · RMKT Dinámico", tipo: "Display",
+      gasto: "416,81 €", impresiones: "45.834", clics: "475", ctr: "1,04%",
+      conversiones: "7,00", cpa: "59,54 €", valorConv: "276,32 €",
+    },
+  ];
+
+  // Lectura rápida del mes (Google Ads)
+  const GOOGLE_CONCLUSIONES = [
+    "La cuenta española genera 3.483 conversiones con 8.176 € de inversión — CPA medio de 2,35 € y ROAS de 22,6x en todo el periodo.",
+    "Search · Brand sigue siendo el motor: 2.092 conversiones a solo 0,44 € cada una, más de la mitad de las conversiones totales de la cuenta.",
+    "PMáx · Lanzamientos/Promos aporta 474 conversiones a 3,49 € — recoge el tráfico de las promos de packs/suscripción y vuelta al cole.",
+    "Demand Gen · Suscripción sigue siendo cara (38,14 € de CPA) pero con menos peso en el presupuesto que en el informe anterior (869 € vs 1.500 €) — coherente con la decisión de reducirle presupuesto para probar otro tipo de campaña.",
+    "Nueva campaña Demand Gen · SMILEAT KIDS (26 conversiones, 43,56 € de CPA): en fase inicial, coincide con el lanzamiento de cereales KIDS.",
+    "Display · RMKT Dinámico es la más cara de la cuenta (59,54 € de CPA, solo 7 conversiones) — candidata a revisar si no mejora.",
+    "Este export no trae comparación automática con el periodo anterior (sí la traía el informe de julio), así que estos datos son del periodo actual sin variación calculada.",
+  ];
+
+  /* ------------------------------------------------------------
+     TOP 10 PRODUCTOS POR INGRESOS (Meta y Google)
+     Fuente: GA4 · ingresos por artículo, desglosado por campaña de
+     sesión → agrupado y sumado por nombre de producto.
+     Datos mensuales de julio 2026 (mismo rango que el resto del
+     informe). Ordenados de mayor a menor ingreso.
+     ------------------------------------------------------------ */
+  const TOP_META_SUB = "Ingresos por producto (GA4) · " + MES;
+  const TOP_GOOGLE_SUB = "Ingresos por producto (GA4) · " + MES;
+
+  // Datos reales de GA4 (Productos + vendidos - Google + Meta Ads),
+  // agregados por producto y ordenados por ingresos. Incluye también
+  // tráfico de Portugal (el export es "Smileat Global", no solo España).
+  const TOP_META_PRODUCTOS = [
+    { nombre: "100% Frutos secos y cacahuete", comprados: 37, carrito: 139, ingresos: "446,76 €" },
+    { nombre: "Tarrito de pavo y verduras", comprados: 194, carrito: 1314, ingresos: "442,37 €" },
+    { nombre: "Tarrito de pollo con arroz y guisantes", comprados: 186, carrito: 999, ingresos: "430,90 €" },
+    { nombre: "Tarrito de verduras con lubina y merluza", comprados: 175, carrito: 1152, ingresos: "400,37 €" },
+    { nombre: "Tarrito de ternera con verduras", comprados: 175, carrito: 1232, ingresos: "400,16 €" },
+    { nombre: "Tarrito de brócoli, cordero y chirivía", comprados: 172, carrito: 1046, ingresos: "399,64 €" },
+    { nombre: "Tarrito de guisito de alubias", comprados: 160, carrito: 1008, ingresos: "364,71 €" },
+    { nombre: "Tarrito de bacalao con patatas y verduras", comprados: 150, carrito: 550, ingresos: "346,45 €" },
+    { nombre: "Tarrito de cocidito con ternera y jamón", comprados: 152, carrito: 725, ingresos: "345,48 €" },
+    { nombre: "Pack Mix Pouches", comprados: 8, carrito: 19, ingresos: "316,52 €" },
+  ];
+  const TOP_META_TOTAL = { comprados: 4905, carrito: 24437, ingresos: "13.523,46 €" };
+
+  const TOP_GOOGLE_PRODUCTOS = [
+    { nombre: "Pack Carne y Pescado", comprados: 130, carrito: 256, ingresos: "3.842,81 €" },
+    { nombre: "Tarrito de ternera con verduras", comprados: 1438, carrito: 2950, ingresos: "3.540,22 €" },
+    { nombre: "Tarrito de brócoli, cordero y chirivía", comprados: 1406, carrito: 2539, ingresos: "3.498,88 €" },
+    { nombre: "Tarrito de pavo y verduras", comprados: 1380, carrito: 2952, ingresos: "3.398,95 €" },
+    { nombre: "Tarrito de pollo con arroz y guisantes", comprados: 1252, carrito: 2356, ingresos: "3.100,72 €" },
+    { nombre: "Tarrito de verduras con merluza", comprados: 1191, carrito: 2105, ingresos: "2.943,72 €" },
+    { nombre: "Tarrito de verduras con lubina y merluza", comprados: 1188, carrito: 2460, ingresos: "2.921,74 €" },
+    { nombre: "Tarrito de guisito de alubias", comprados: 1123, carrito: 2237, ingresos: "2.780,56 €" },
+    { nombre: "Tarrito de bacalao con patatas y verduras", comprados: 1095, carrito: 1714, ingresos: "2.716,60 €" },
+    { nombre: "Tarrito de cocidito con ternera y jamón", comprados: 1063, carrito: 1922, ingresos: "2.628,61 €" },
+  ];
+  const TOP_GOOGLE_TOTAL = { comprados: 33565, carrito: 60874, ingresos: "99.211,85 €" };
+
+  /* ------------------------------------------------------------
+     SEMÁFORO POR MÉTRICA (Meta) — igual que en el reporte de campaña
+     ------------------------------------------------------------ */
+  const campos = [
+    ['resultados', 'Resultados'],
+    ['gasto', 'Gasto'],
+    ['costeResultado', 'Coste/result.'],
+    ['impresiones', 'Impresiones'],
+    ['alcance', 'Alcance'],
+    ['frecuencia', 'Frecuencia'],
+    ['clics', 'Clics'],
+    ['ctr', 'CTR'],
+    ['valorResultados', 'Ingresos'],
+  ];
+  const UMBRALES = {
+    resultados:      { dir: 1,  bueno: 50,    regular: 0 },
+    costeResultado:  { dir: -1, bueno: 6,     regular: 8 },
+    frecuencia:      { dir: -1, bueno: 3,     regular: 999 },
+    ctr:             { dir: 1,  bueno: 1,     regular: 0.8 },
+    alcance:         { dir: 1,  bueno: 15000, regular: 0 },
+    valorResultados: { dir: 1,  bueno: 1000,  regular: 0 },
+  };
+  const UMBRALES_GOOGLE = {
+    cpa:           { dir: -1, bueno: 6,  regular: 8 },
+    ctr:           { dir: 1,  bueno: 3,  regular: 1.5 },
+    conversiones:  { dir: 1,  bueno: 20, regular: 0 },
+    cuotaImpresiones: { dir: 1, bueno: 60, regular: 35 },
+  };
+  const METRICAS_DEPENDIENTES_DEL_TIEMPO = ['resultados', 'alcance', 'valorResultados', 'frecuencia'];
+
+  function parseNum(str){
+    if (str == null) return NaN;
+    const limpio = String(str).replace(/[€%\s]/g, '').replace(/\./g, '').replace(',', '.');
+    const n = parseFloat(limpio);
+    return isNaN(n) ? NaN : n;
+  }
+  function claseColor(valor, umbral){
+    if (isNaN(valor)) return null;
+    const { dir, bueno, regular } = umbral;
+    if (dir === 1){
+      if (valor >= bueno) return 'good';
+      if (valor >= regular) return 'mid';
+      return 'bad';
+    } else {
+      if (valor <= bueno) return 'good';
+      if (valor <= regular) return 'mid';
+      return 'bad';
+    }
+  }
+  function calcularColores(contenido){
+    return contenido.map(item => {
+      const colorItem = {};
+      Object.keys(UMBRALES).forEach(key => {
+        if (item.nueva && METRICAS_DEPENDIENTES_DEL_TIEMPO.includes(key)) return;
+        const val = parseNum(item.metricas?.[key]);
+        const cls = claseColor(val, UMBRALES[key]);
+        if (cls) colorItem[key] = cls;
+      });
+      return colorItem;
+    });
+  }
+
+  // ============================================================
+  // RENDER
+  // ============================================================
+
+  document.getElementById('titulo').textContent = "SMILEAT · REPORTE MENSUAL ADS";
+  document.getElementById('subtitulo').textContent = MES;
+  document.getElementById('pie').textContent = "Smileat · " + MES + " · Meta Ads + Google Ads";
+
+  // ---- MIMO ----
+  const MIMO_META = [
+    { key: 'mantener',  icon: '✅', label: 'Mantener',   color: '#1a8f4c' },
+    { key: 'incorporar',icon: '➕', label: 'Incorporar', color: '#0866ff' },
+    { key: 'mejorar',   icon: '🔧', label: 'Mejorar',    color: '#9a6b00' },
+    { key: 'omitir',    icon: '🚫', label: 'Omitir',     color: '#c23a2a' },
+  ];
+  document.getElementById('mimo-grid').innerHTML = MIMO_META.map(({key, icon, label, color}) => {
+    const items = MIMO[key] || [];
+    const body = items.length
+      ? `<ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`
+      : `<p class="empty">Sin elementos todavía.</p>`;
+    return `
+      <div class="mimo-card" style="--c:${color}">
+        <h3><span class="mimo-icon">${icon}</span>${label}</h3>
+        ${body}
+      </div>
+    `;
+  }).join('');
+
+  // ---- Promos + carrusel ----
+  document.getElementById('promos-sub').textContent = PROMOS_SUB;
+  const promosGrid = document.getElementById('promos-grid');
+
+  // Índice actualmente mostrado en cada carrusel de promo
+  const carouselState = {};
+
+  function mediaHtml(item){
+    return item.type === 'video'
+      ? `<video src="${item.src}" muted playsinline controls></video>`
+      : `<img src="${item.src}" alt="${item.nota || ''}">`;
+  }
+
+  function carruselHtml(creatividades, promoIdx){
+    if (!creatividades || !creatividades.length) return '';
+    carouselState[promoIdx] = 0;
+    const total = creatividades.length;
+    const first = creatividades[0];
+    const counter = total > 1 ? `<div class="promo-carousel-counter">1 / ${total}</div>` : '';
+    const navs = total > 1
+      ? `<button class="promo-carousel-nav prev" data-idx="${promoIdx}" data-dir="-1" aria-label="Anterior">‹</button>
+         <button class="promo-carousel-nav next" data-idx="${promoIdx}" data-dir="1" aria-label="Siguiente">›</button>`
+      : '';
+    return `
+      <div class="promo-carousel">
+        <div class="promo-carousel-slide" id="slide-${promoIdx}">${mediaHtml(first)}${counter}</div>
+        ${navs}
+        <div class="promo-carousel-label" id="label-${promoIdx}">${first.nota || ''}</div>
+      </div>
+    `;
+  }
+
+  function actualizarSlide(promoIdx){
+    const creatividades = (PROMOS[promoIdx] && PROMOS[promoIdx].creatividades) || [];
+    if (!creatividades.length) return;
+    const idx = carouselState[promoIdx];
+    const item = creatividades[idx];
+    const slide = document.getElementById(`slide-${promoIdx}`);
+    const label = document.getElementById(`label-${promoIdx}`);
+    const counter = creatividades.length > 1 ? `<div class="promo-carousel-counter">${idx + 1} / ${creatividades.length}</div>` : '';
+    if (slide) slide.innerHTML = mediaHtml(item) + counter;
+    if (label) label.textContent = item.nota || '';
+  }
+
+  promosGrid.innerHTML = PROMOS.length
+    ? PROMOS.map((p, i) => `
+      <div class="promo-card">
+        <div class="promo-fecha">${p.fecha || ''}</div>
+        <h4>${p.nombre || ''}</h4>
+        <p>${p.descripcion || ''}</p>
+        <div class="promo-badges">
+          ${(p.plataformas || []).map(pl => `<span class="promo-badge ${pl}">${pl === 'meta' ? 'META' : 'GOOGLE'}</span>`).join('')}
+        </div>
+        ${carruselHtml(p.creatividades, i)}
+      </div>
+    `).join('')
+    : `<p class="empty" style="grid-column: 1/-1;">Sin promociones registradas todavía.</p>`;
+
+  document.querySelectorAll('.promo-carousel-nav').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const promoIdx = Number(btn.dataset.idx);
+      const dir = Number(btn.dataset.dir);
+      const total = ((PROMOS[promoIdx] && PROMOS[promoIdx].creatividades) || []).length;
+      if (!total) return;
+      carouselState[promoIdx] = (carouselState[promoIdx] + dir + total) % total;
+      actualizarSlide(promoIdx);
+    });
+  });
+
+  // ---- KPIs ----
+  function renderKpis(containerId, kpis){
+    document.getElementById(containerId).innerHTML = kpis.map(k => {
+      // admite tanto el formato viejo [lab, val] como el nuevo {lab, val, delta, cls}
+      const isObj = !Array.isArray(k);
+      const lab = isObj ? k.lab : k[0];
+      const val = isObj ? k.val : k[1];
+      const delta = isObj ? k.delta : null;
+      const cls = isObj ? (k.cls || 'neutral') : 'neutral';
+      return `
+      <div class="kpi">
+        <div class="kpi-val">${val}</div>
+        <div class="kpi-lab">${lab}</div>
+        ${delta ? `<div class="kpi-delta ${cls}">${delta}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('meta-sub').textContent = META_SUB;
+  document.getElementById('google-sub').textContent = GOOGLE_SUB;
+  renderKpis('meta-kpis', META_KPIS);
+  renderKpis('google-kpis', GOOGLE_KPIS);
+
+  const metaConclusionesEl = document.getElementById('meta-conclusiones');
+  if (typeof META_CONCLUSIONES !== 'undefined' && META_CONCLUSIONES.length){
+    metaConclusionesEl.innerHTML = `
+      <h3>💡 Lectura rápida ${COMPARATIVA}</h3>
+      <ul>${META_CONCLUSIONES.map(c => `<li>${c}</li>`).join('')}</ul>
+    `;
+  } else {
+    metaConclusionesEl.style.display = 'none';
+  }
+
+  const googleConclusionesEl = document.getElementById('google-conclusiones');
+  if (typeof GOOGLE_CONCLUSIONES !== 'undefined' && GOOGLE_CONCLUSIONES.length){
+    googleConclusionesEl.innerHTML = `
+      <h3>💡 Lectura rápida ${COMPARATIVA}</h3>
+      <ul>${GOOGLE_CONCLUSIONES.map(c => `<li>${c}</li>`).join('')}</ul>
+    `;
+  } else {
+    googleConclusionesEl.style.display = 'none';
+  }
+
+  // ---- Meta creatividades ----
+  const colores = calcularColores(META_CREATIVOS);
+  const listaMeta = document.getElementById('meta-creativos');
+  listaMeta.innerHTML = META_CREATIVOS.length ? '' : '<p class="empty">Sin creatividades cargadas todavía.</p>';
+  META_CREATIVOS.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const mediaEl = item.type === 'video'
+      ? `<video src="${item.src}" controls playsinline></video>`
+      : `<img src="${item.src}" alt="${item.nota || ''}">`;
+    const m = item.metricas || {};
+    const colorItem = colores[i] || {};
+    const statsHtml = campos.map(([key, label]) => {
+      const clsColor = colorItem[key] ? ` ${colorItem[key]}` : '';
+      return `
+      <div class="stat${clsColor}">
+        <div class="val">${m[key] ?? '—'}</div>
+        <div class="lab">${label}</div>
+      </div>`;
+    }).join('');
+    const badgeNuevaHtml = item.nueva ? `<span class="badge-new">🆕 ${item.nueva}</span>` : '';
+    card.innerHTML = `
+      <div class="rank">#${i + 1}</div>
+      <div class="media">${mediaEl}</div>
+      <div class="card-body">
+        <p class="card-title">${item.nota || ''}</p>
+        ${badgeNuevaHtml}
+        <div class="stats">${statsHtml}</div>
+      </div>
+    `;
+    listaMeta.appendChild(card);
+  });
+
+  // ---- Top 10 productos por ingresos ----
+  document.getElementById('top-meta-sub').textContent = TOP_META_SUB;
+  document.getElementById('top-google-sub').textContent = TOP_GOOGLE_SUB;
+
+  function renderTopProductos(tablaId, productos, headClass, total){
+    if (!productos.length){
+      document.getElementById(tablaId).innerHTML = `
+        <tbody><tr><td style="padding:16px;" class="empty">Sin datos de GA4 cargados todavía para este periodo.</td></tr></tbody>
+      `;
+      return;
+    }
+    const filas = productos.map((p, i) => `
+      <tr>
+        <td class="num rank-num">#${i + 1}</td>
+        <td class="nombre">${p.nombre}</td>
+        <td class="num">${p.comprados.toLocaleString('es-ES')}</td>
+        <td class="num">${p.carrito.toLocaleString('es-ES')}</td>
+        <td class="num">${p.ingresos}</td>
+      </tr>`).join('');
+    const filaTotal = total ? `
+      <tr class="fila-total">
+        <td></td>
+        <td class="nombre">Total (todos los productos, no solo el top 10)</td>
+        <td class="num">${total.comprados.toLocaleString('es-ES')}</td>
+        <td class="num">${total.carrito.toLocaleString('es-ES')}</td>
+        <td class="num">${total.ingresos}</td>
+      </tr>` : '';
+    document.getElementById(tablaId).innerHTML = `
+      <thead>
+        <tr>
+          <th class="num ${headClass}">#</th>
+          <th class="${headClass}">Producto</th>
+          <th class="num ${headClass}">Comprados</th>
+          <th class="num ${headClass}">Añadidos carrito</th>
+          <th class="num ${headClass}">Ingresos</th>
+        </tr>
+      </thead>
+      <tbody>${filas}${filaTotal}</tbody>
+    `;
+  }
+  renderTopProductos('top-google-tabla', TOP_GOOGLE_PRODUCTOS, '', TOP_GOOGLE_TOTAL);
+  renderTopProductos('top-meta-tabla', TOP_META_PRODUCTOS, 'head-meta', TOP_META_TOTAL);
+
+  // Nota: a partir de este mes la tabla de campañas de Google ya no se
+  // muestra en el reporte (se deja solo el resumen de KPIs + lectura rápida).
+  // GOOGLE_CAMPANAS y GOOGLE_COLUMNAS se conservan arriba como fuente de
+  // datos interna, por si se necesita el detalle en algún momento.
+
+</script>
+</body>
+</html>
