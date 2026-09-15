@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smileat · Monthly Advertising Performance Report</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="assets/logo-smileat.png" alt="Smileat">
+    <h1 id="titulo"></h1>
+    <p id="subtitulo"></p>
+  </header>
+
+  <nav class="report-nav">
+    <a href="#mimo">MIMO</a>
+    <a href="#promos">Promociones</a>
+    <a href="#meta">Meta Ads</a>
+    <a href="#google">Google Ads</a>
+  </nav>
+
+  <!-- ==================== MIMO (compartido Meta + Google) ==================== -->
+  <section class="section" id="mimo">
+    <h2>MIMO del próximo mes</h2>
+    <p class="section-sub" id="mimo-sub"></p>
+    <div class="mimo-grid" id="mimo-grid"></div>
+  </section>
+
+  <!-- ==================== Promociones / lanzamientos ==================== -->
+  <section class="section" id="promos">
+    <h2>Promociones y lanzamientos del mes</h2>
+    <p class="section-sub" id="promos-sub"></p>
+    <div class="promos-grid" id="promos-grid"></div>
+  </section>
+
+  <!-- ==================== META ADS ==================== -->
+  <section class="section" id="meta">
+    <h2><span class="platform-dot meta"></span> Meta Ads</h2>
+    <p class="section-sub" id="meta-sub"></p>
+
+    <div class="kpi-group">
+      <p class="kpi-group-label" id="meta-ecommerce-label"></p>
+      <div class="kpi-bar" id="meta-kpis-ecommerce"></div>
+    </div>
+    <div class="kpi-group">
+      <p class="kpi-group-label" id="meta-marca-label"></p>
+      <div class="kpi-bar" id="meta-kpis-marca"></div>
+    </div>
+
+    <div class="conclusiones" id="meta-conclusiones"></div>
+    <div class="creativos" id="meta-creativos"></div>
+    <h3 class="top-productos-titulo">Top 10 productos por ingresos</h3>
+    <p class="section-sub" id="top-meta-sub"></p>
+    <div class="tabla-card"><table class="tabla" id="top-meta-tabla"></table></div>
+  </section>
+
+  <!-- ==================== GOOGLE ADS ==================== -->
+  <section class="section" id="google">
+    <h2><span class="platform-dot google"></span> Google Ads</h2>
+    <p class="section-sub" id="google-sub"></p>
+    <div class="kpi-bar" id="google-kpis"></div>
+    <div class="conclusiones conclusiones-google" id="google-conclusiones"></div>
+    <h3 class="top-productos-titulo">Top 10 productos por ingresos</h3>
+    <p class="section-sub" id="top-google-sub"></p>
+    <div class="tabla-card"><table class="tabla" id="top-google-tabla"></table></div>
+  </section>
+
+  <footer>
+    <span class="footer-title">Smileat · Monthly Advertising Performance Report</span>
+    <span class="footer-contact">Contacto: <a href="mailto:noelia.nieto@smileat.com">noelia.nieto@smileat.com</a></span>
+  </footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

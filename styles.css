@@ -1,0 +1,497 @@
+/* ============================================================
+   SMILEAT · MONTHLY ADVERTISING PERFORMANCE REPORT
+   Hoja de estilos — identidad de marca Smileat
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap');
+
+:root{
+  /* ---- Paleta de marca ---- */
+  --brand-blue: #00a2e1;
+  --brand-white: #ffffff;
+  --brand-gray: #545454;
+
+  --sec-green: #92b436;
+  --sec-pink: #fe2675;
+  --sec-yellow: #fdcd2b;
+  --sec-purple: #6a1e93;
+  --sec-orange: #fe8100;
+  --sec-navy: #003f6d;
+
+  --meta: #0866ff;
+  --google: #ea4335;
+
+  --ink: #232323;
+  --ink-dim: var(--brand-gray);
+  --page-bg: #f4f7f9;
+  --card-bg: #ffffff;
+  --chip-bg: #f3f6f9;
+  --line: #e3eaf0;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin:0; padding:0;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: 'Montserrat', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- cabecera ---------------- */
+header{
+  background: var(--brand-blue);
+  color: var(--brand-white);
+  padding: 36px 24px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+header img.logo{ height: 54px; width: auto; }
+header h1{
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+header p{
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.02em;
+}
+
+/* ---------------- navegación rápida ---------------- */
+nav.report-nav{
+  background: var(--sec-navy);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 20px;
+}
+nav.report-nav a{
+  font-family: 'Nunito', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.12);
+  padding: 8px 18px;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+nav.report-nav a:hover{ background: rgba(255,255,255,0.24); }
+
+/* ---------------- secciones generales ---------------- */
+.section{
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 44px 20px 8px;
+}
+.section h2{
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ink);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section .section-sub{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-gray);
+  margin: 0 0 22px;
+  line-height: 1.5;
+}
+.platform-dot{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.platform-dot.meta{ background: var(--meta); }
+.platform-dot.google{ background: var(--google); }
+.empty{
+  font-size: 12px;
+  color: var(--ink-dim);
+  font-style: italic;
+}
+
+/* ---------------- MIMO ---------------- */
+.mimo-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.mimo-card{
+  background: var(--tint);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 20px 18px;
+}
+.mimo-card h3{
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--c);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.mimo-card ul{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.mimo-card ul li{ margin-bottom: 6px; }
+.mimo-card .empty{ margin-top: 10px; }
+@media (max-width: 900px){ .mimo-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .mimo-grid{ grid-template-columns: 1fr; } }
+
+/* ---------------- Promos / lanzamientos ---------------- */
+.promos-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.promo-card{
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 18px 18px;
+  box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.promo-card .promo-fecha{
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--brand-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+.promo-card h4{
+  font-family: 'Nunito', sans-serif;
+  font-size: 15.5px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+.promo-card p{
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.promo-badges{ display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+.promo-badge{
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: #fff;
+}
+.promo-badge.meta{ background: var(--meta); }
+.promo-badge.google{ background: var(--google); }
+@media (max-width: 900px){ .promos-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px){ .promos-grid{ grid-template-columns: 1fr; } }
+
+/* carrusel de creatividades — todas las cajas con la misma altura */
+.promo-carousel{ position: relative; margin-top: auto; padding-top: 12px; }
+.promo-carousel-slide{
+  position: relative;
+  background: var(--sec-navy);
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+.promo-carousel-slide img,
+.promo-carousel-slide video{
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.promo-carousel-counter{
+  position: absolute;
+  top: 8px; right: 8px;
+  background: rgba(0,0,0,0.55);
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+.promo-carousel-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 1px 3px rgba(16,34,44,0.2);
+  z-index: 2;
+}
+.promo-carousel-nav.prev{ left: 8px; }
+.promo-carousel-nav.next{ right: 8px; }
+
+/* ---------------- resumen de métricas (KPI bar) ---------------- */
+.kpi-group{ margin-bottom: 22px; }
+.kpi-group-label{
+  font-family: 'Nunito', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brand-gray);
+  margin: 0 0 10px;
+}
+.kpi-bar{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.kpi{
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+}
+.kpi .kpi-val{
+  font-family: 'Nunito', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.kpi .kpi-lab{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-top: 4px;
+}
+.kpi .kpi-delta{
+  font-family: 'Nunito', sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+.kpi .kpi-delta.good{ color: var(--sec-green); }
+.kpi .kpi-delta.bad{ color: var(--sec-pink); }
+.kpi .kpi-delta.neutral{ color: var(--ink-dim); }
+
+/* conclusiones / lectura rápida */
+.conclusiones{
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand-blue);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+}
+.conclusiones h3{
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--brand-blue);
+  margin: 0 0 10px;
+}
+.conclusiones.conclusiones-google{ border-left-color: var(--google); }
+.conclusiones.conclusiones-google h3{ color: var(--google); }
+.conclusiones + .top-productos-titulo{ margin-top: 40px; }
+.conclusiones ul{
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.conclusiones ul li{ margin-bottom: 8px; }
+.conclusiones ul li strong{ color: var(--ink); font-weight: 700; }
+
+/* ---------------- creatividades Meta (cards) ---------------- */
+.creativos{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  padding-bottom: 10px;
+}
+.creativos:empty{ display: none; padding: 0; }
+.card{
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+  display: flex;
+  flex-direction: column;
+}
+.rank{
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--meta);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+}
+.media{ background: var(--sec-navy); aspect-ratio: 4 / 5; overflow: hidden; }
+.media img, .media video{ width: 100%; height: 100%; object-fit: cover; display:block; }
+.card-body{ padding: 16px 16px 18px; }
+.card-title{
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.badge-new{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(253,205,43,0.22);
+  color: #8a6200;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat{ background: var(--chip-bg); border-radius: 10px; padding: 9px 6px; text-align: center; }
+.stat .val{
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.stat .lab{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-top: 4px;
+}
+.stat.good{ background: rgba(146,180,54,0.15); } .stat.good .val{ color: #5c7423; }
+.stat.mid{ background: rgba(253,205,43,0.2); } .stat.mid .val{ color: #8a6200; }
+.stat.bad{ background: rgba(254,38,117,0.13); } .stat.bad .val{ color: #c4105a; }
+@media (max-width: 560px){ .creativos{ grid-template-columns: 1fr; } }
+
+/* ---------------- tabla (top productos) ---------------- */
+.tabla-card{
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(16,34,44,0.06);
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+table.tabla{ width: 100%; border-collapse: collapse; }
+.tabla thead th{
+  background: var(--google);
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+.tabla thead th.num{ text-align: right; }
+.tabla thead th.head-meta{ background: var(--meta); }
+.tabla td.rank-num{ font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--ink-dim); }
+.tabla tr.fila-total td{
+  border-top: 2px solid var(--ink);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  background: var(--chip-bg);
+}
+.tabla tbody td{
+  padding: 10px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  white-space: nowrap;
+}
+.tabla tbody tr:nth-child(even){ background: var(--chip-bg); }
+.tabla td.num{ text-align: right; font-variant-numeric: tabular-nums; }
+.tabla td.nombre{ font-weight: 700; white-space: normal; }
+.tabla td.num.good{ color: #5c7423; font-weight: 700; }
+.tabla td.num.mid{ color: #8a6200; font-weight: 700; }
+.tabla td.num.bad{ color: #c4105a; font-weight: 700; }
+@media (max-width: 560px){ .tabla thead th, .tabla tbody td{ padding: 8px 8px; font-size: 12px; } }
+
+/* ---------------- top productos por ingresos ---------------- */
+.top-productos-titulo{
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 12px 0 4px;
+}
+
+/* ---------------- footer ---------------- */
+footer{
+  background: var(--brand-blue);
+  color: var(--brand-white);
+  text-align:center;
+  padding: 30px 16px 34px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+footer .footer-title{
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+footer .footer-contact{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+}
+footer .footer-contact a{ color: #ffffff; font-weight: 700; text-decoration: none; }
+footer .footer-contact a:hover{ text-decoration: underline; }
